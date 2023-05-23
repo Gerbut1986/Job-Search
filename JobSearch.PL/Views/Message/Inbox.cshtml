@@ -1,0 +1,63 @@
+﻿@model IEnumerable<JobSearch.BLL.Dto.MessageDto>
+@{
+    ViewBag.Title = "Повідомлення";
+}
+
+@{
+    var sender = ViewBag.Sender;
+}
+
+<div class="container" style="background-color:white;margin-top:122px;padding:70px">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <div class="mail-box">
+        <aside class="lg-side">
+            <div class="inbox-head">
+                <h3>Вхідні повідомлення</h3>
+            </div>
+            <div class="inbox-body">
+                <table class="table table-inbox table-hover">
+                    <tbody>
+                        @using (Html.BeginForm())
+                        {
+                            foreach (var msg in Model)
+                            {
+                                if (msg.IsReviwed == true)
+                                {
+                                    <tr class="unread">
+                                        <td class="inbox-small-cells">
+                                            <input type="checkbox" class="mail-checkbox">
+                                        </td>
+                                        <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
+                                        <td class="view-message  dont-show">@sender</td>
+                                        <td class="view-message ">
+                                            @Html.ActionLink(@msg.Title, "FullMessage", "Message", new { msgId = msg.Id }, new { })
+                                        </td>
+                                        <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
+                                        <td class="view-message  text-right">@msg.DateMessage</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr class="unread" style="background-color:silver">
+                                        <td class="inbox-small-cells">
+                                            <input type="checkbox" class="mail-checkbox">
+                                        </td>
+                                        <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
+                                        <td class="view-message  dont-show">@sender</td>
+                                        <td class="view-message ">
+                                            @Html.ActionLink(@msg.Title, "FullMessage", "Message", new { msgId = msg.Id }, new { })
+                                        </td>
+                                        <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
+                                        <td class="view-message  text-right">@msg.DateMessage</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </aside>
+    </div>
+</div>
+
+

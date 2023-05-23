@@ -1,0 +1,56 @@
+﻿@model JobSearch.BLL.Dto.VacancyDto
+@{
+    ViewBag.Title = "Vacancy [Delete]";
+}
+
+@using (Html.BeginForm())
+{
+    var vacancy = Model;
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row clearfix" style="width:70%;margin:auto">
+            <h1 style="font-weight: bold; background-color: red; color: white; margin-top: 100px; text-align: center; font-family: 'Palatino Linotype';">
+                Вакансія - Delete Form
+            </h1>
+            <h4 style="text-align:center;color:white;background-color:black">
+                Ви впевнені, що хочете видалити цю вакансію?
+            </h4>
+            <div class="col">
+                <div class="card single_post" style="padding:12px">
+                    <div class="body" style="font-family:'Times New Roman';font-weight:bold;text-align:center">
+                        <form class="row clearfix">
+                            <div class="form-group">
+                                @Html.HiddenFor(t => vacancy.Id)
+                            </div>
+                            <div class="form-group" style="font-weight: bold; font-family:'Palatino Linotype';text-align: center; font-size: x-large">
+                                @Html.DisplayFor(t => vacancy.JobTitle)
+                            </div>
+                            <div class="form-group" style="text-align:center">
+                                <img width="250"
+                                     src="@Url.Content("~/Images/Vacancies/" + vacancy.Photo)"
+                                     alt="Image doesn't upload..'">
+                            </div>
+                            <div class="form-group" style="font-size:large">
+                                @Html.DisplayFor(t => vacancy.JobDescription)
+                            </div>
+                            <div style="font-size:small;color:darkred;margin-top:12px" class="form-group">
+                                Дата створення:&nbsp; @Html.DisplayFor(t => vacancy.DatePublish)
+                            </div>
+                            <div style="margin-top:12px;text-align:center">
+                                <button type="submit" class="btn btn-block btn-danger">Видалити</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div class="row" style="text-align:center;margin-top:5px">
+    <div class="col">
+        @Html.ActionLink("<-- Повернутися назад до вакансій", "Index", "Home", null,
+             new { @class = "btn btn-default", style = "background-color:black;color:white" })
+    </div>
+</div>
+

@@ -1,0 +1,99 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        var user = Context.User;
+        string username = "";
+        if (user.Identity.IsAuthenticated)
+        {
+
+            username = user.Identity.Name;
+        }
+        else
+        {
+            // Виконувати дії, коли користувач не залогінений
+        }
+        @Html.AntiForgeryToken()
+
+        <ul class="navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", id = "wlcm", @class = "nav-link" })
+            </li>
+            <li>
+                @Html.ActionLink("Messages", "Inbox", "Message", new { userName = username }, new { id = "msg", @class = "nav-item nav-link" })
+            </li>
+            <li>
+                <a id="logoff" class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
+                    Log off
+                </a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}
+
+<style>
+    #msg {
+        color: blue;
+        padding: 9px;
+        border-radius: 5px;
+        border: 0.4px solid blue;
+        margin-right:7px;
+        text-decoration: none
+    }
+
+        #msg:hover {
+            color: darkblue;
+            border: 1px solid darkblue;
+        }
+
+    ul li {
+        background-color: transparent;
+        font-family: 'Palatino Linotype'
+    }
+
+    #wlcm {
+        padding: 9px;
+        color: white;
+    }
+
+    #loginLink {
+        color: blue;
+        border-radius: 5px;
+        border: 0.4px solid blue;
+    }
+
+        #loginLink:hover {
+            color: darkblue;
+            border: 0.4px solid darkblue;
+        }
+
+        #loginLink:active {
+            color: greenyellow;
+            border: 0.4px solid greenyellow;
+        }
+
+    #logoff {
+        border: 0.4px solid red;
+        border-radius: 5px;
+        text-decoration: none;
+        padding: 9px;
+        color: red;
+    }
+
+        #logoff:hover {
+            border: 0.4px solid darkred;
+            color: darkred;
+        }
+
+        #logoff:active {
+            border: 0.4px solid darkgoldenrod;
+            color: darkgoldenrod;
+        }
+</style>

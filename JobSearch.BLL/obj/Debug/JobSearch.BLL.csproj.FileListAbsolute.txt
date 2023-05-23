@@ -1,0 +1,24 @@
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.BLL.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.BLL.pdb
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.DAL.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\bin\Debug\EntityFramework.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.DAL.pdb
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.DAL.dll.config
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\bin\Debug\EntityFramework.xml
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.csproj.AssemblyReference.cache
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.csproj.CoreCompileInputs.cache
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.csproj.CopyComplete
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.pdb
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.BLL.dll
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.BLL.pdb
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.DAL.dll
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.DAL.pdb
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\bin\Debug\JobSearch.DAL.dll.config
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.csproj.AssemblyReference.cache
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.csproj.CopyComplete
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.dll
+C:\Users\Atom\Desktop\Диплом\JobSearcher\Job search Web App\Job search Web App\JobSearch.BLL\obj\Debug\JobSearch.BLL.pdb

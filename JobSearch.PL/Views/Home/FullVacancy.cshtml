@@ -1,0 +1,57 @@
+﻿@model JobSearch.BLL.Dto.VacancyDto
+@{
+    ViewBag.Title = "Full Article";
+    JobSearch.BLL.Dto.VacancyDto vacancy = Model;
+    string Path = "~/Images/Vacancies/" + vacancy.Photo;
+}
+
+<h6 style="font-family:'Times New Roman';font-weight:bold;text-align:center;padding:30px;color:darkblue">
+    <span>Date of action:&nbsp;</span> @DateTime.UtcNow
+</h6>
+
+<div class="container">
+    <div class="row clearfix" style="width:70%;margin:auto">
+        <div class="col">
+            <div class="card single_post" style="padding:12px">
+                <div class="body" style="overflow:auto">
+                    <div class="img-post">
+                        <img class="d-block img-fluid" width="100%" height="100%" src="@Url.Content(Path)" alt="Image doesn't upload..'">
+                    </div>
+                    <h3 style="text-decoration:none;font-weight:bold;color:blue;font-family:'Palatino Linotype'">
+                        @vacancy.JobTitle
+                    </h3>
+                    <h4 style="font-family:'Times New Roman'">
+                        @vacancy.JobDescription
+                    </h4>
+                </div>
+                <div class="row">
+                    <div class="col" style="text-align:left;color:darkblue;font-weight:bold">
+                        <span>Оплата(ЗП):</span><span>&nbsp;@vacancy.JobPayment</span>
+                    </div>
+                    <div class="col" style="text-align:right;font-weight:bold;color:darkred">
+                        <small style="">Дата публікації:</small>&nbsp;
+                        <small>@vacancy.DatePublish</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.IsLogin == true)
+        {
+            <div class="row" style="text-align:center">
+                <div class="col">
+                    <hr />
+                    @Html.ActionLink("Remove", "vacancy", "Delete",
+                       new { id = vacancy.Id }, new { @class = "btn btn-danger", style = "text-decoration:none" })
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row" style="text-align:center;margin-top:12px">
+        <hr />
+        <div class="col">
+            @Html.ActionLink("<-- Назад до ваканцій", "Index", "Home", null,
+              new { @class = "btn btn-default", style = "background-color:#353535;color:white" })
+        </div>
+    </div>
+</div>

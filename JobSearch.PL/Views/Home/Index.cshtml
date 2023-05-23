@@ -1,0 +1,243 @@
+﻿@model IEnumerable<JobSearch.BLL.Dto.VacancyDto>
+@{
+    ViewBag.Title = "Main Page";
+    var role = ViewBag.Role;
+}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="row" style="font-family:'Times New Roman';font-weight:bold;text-align:left;margin-top:108px;color:darkblue">
+    @if (ViewBag.UserId != 0)
+    {
+        <hr />
+        <div class="col" style="text-align:left">
+            <h6 style="font-weight:bold">
+                @ViewBag.WelcomeStr
+            </h6>
+        </div>
+        if (role == "RegisterUser")
+        {
+            <div class="col" style="text-align:right">
+                @Html.ActionLink("Моя анкета", "UserProfile", "Home", null, new { id = "profile" })
+            </div>
+        }
+        else
+        {
+            <div class="col" style="text-align:right">
+                @Html.ActionLink("Розмістити нову вакансію", "Vacancy", "Create", new { emplEmail = ViewBag.MyEmail }, new { id = "profile" })
+            </div>
+        }
+        <hr />
+    }
+</div>
+
+<div class="row" style="text-align:center;width:660px;margin:auto">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <div class="col input-group" style="margin-top:10px">
+            <div class="form-outline" style="">
+                <select id="searchBy" name="searchBy" class="form-select">
+                    <option value="0" selected="selected">Пошук по:</option>
+                    <option value="1">
+                        Назва вакансії
+                    </option>
+                    <option value="2">
+                        Назва компанії
+                    </option>
+                </select>
+            </div>
+            <div class="form-outline">
+                <input type="text" class="form-control search" style="width:360px" id="emailBy" name="emailBy" placeholder="Введіть назву вакансії, або назву компанії" onfocus="this.placeholder = ''" onblur="this.placeholder = 'search'" />
+                <label class="form-label" for="search"></label>
+            </div>
+            <div class="form-outline">
+                <button style="" type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>Знайти
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+    var emailBy = document.getElementById("emailBy");
+    var e = document.getElementById("searchBy");
+    var value = e.value;
+    var searchBy = e.options[e.selectedIndex].text;
+    var search = { srchBy: searchBy, mailBy: searchBy };
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'GET',
+        url: '/Index/Index',
+        data: search,
+        success: function (result) {
+            alert(result);
+        }
+    });
+</script>
+
+@if (ViewBag.IsRespond == true)
+{
+    <div style="" class="alert alert-success alert-dismissible">
+        <a href="~/Home/CloseAlerts" class="close" data-dismiss="alert" style="text-decoration: none;text-align:right; font-size: large; color: #82822f"
+           aria-label="close">&times;</a>
+        <h4 style="text-align:center;color:brown;font-family:'Palatino Linotype';font-weight:bold">
+            @ViewBag.ModalMsg
+        </h4>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @Html.ActionLink("Усі категорії", "Index", "Home", new { categoryId = "null" }, new { id = "allCateg" })
+            </div>
+        </div>
+        <div class="row clearfix" style="width:100%;margin:auto">
+            <div style="border-radius:5px" class="col-md-3">
+                <div class="card single_post" style="padding:12px">
+                    @foreach (var category in ViewBag.Categories as List<JobSearch.BLL.Dto.CategoryDto>)
+                    {
+                        var c = category.Id;
+                        <p>
+                            @Html.ActionLink(category.Name, "Index", "Home", new { categoryId = c }, new { style = "text-decoration:none" })
+                        </p>
+                    }
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                @foreach (var vacancy in Model)
+                {
+                    string Path = "~/Images/Vacancies/" + vacancy.Photo;
+                    <div class="card single_post" style="padding:12px">
+                        <div class="body" style="overflow:auto">
+                            <div style="text-align:center">
+                                <img style="background-size:cover" src="@Url.Content(Path)" alt="Image doesn't upload..'">
+                            </div>
+                            <h3>
+                                <a style="text-decoration:none;font-weight:bold;color:blue;
+                                          font-family:'Palatino Linotype'"
+                                   href="/Home/FullVacancy?id=@vacancy.Id">
+                                    @vacancy.JobTitle
+                                </a>
+                            </h3>
+                            @{
+                                if (vacancy.JobDescription.Count() < 222)
+                                {
+                                    <h4 style="font-family:'Times New Roman'">
+                                        @vacancy.JobDescription
+                                    </h4>
+                                }
+                                else
+                                {
+                                    <h4 style="font-family:'Times New Roman'">
+                                        @vacancy.JobDescription.Substring(0, 222)
+                                        @Html.ActionLink("...", "FullVacancy", "Home", new { id = vacancy.Id }, new { style = "font-size:xx-large" })
+                                    </h4>
+                                }
+                            }
+                        </div>
+                        <div class="row">
+                            <div class="col" style="text-align:left;color:darkblue;font-weight:bold">
+                                <span>ЗП:</span><span>&nbsp;@vacancy.JobPayment</span>
+                            </div>
+                            @if (vacancy.EmployerId == ViewBag.UserId && role == "Employer")
+                            {
+                                <div class="col" style="text-align:center;color:red;font-weight:bold">
+                                    @Html.ActionLink("Редагувати", "Vacancy", "Edit",
+                                       new { id = vacancy.Id, emplEmail = ViewBag.MyEmail }, new { id = "edit" })
+                                </div>
+                                <div class="col" style="text-align:center;color:red;font-weight:bold">
+                                    @Html.ActionLink("Видалити", "Vacancy", "Delete",
+                                       new { id = vacancy.Id }, new { id = "remove" })
+                                </div>
+                            }
+                            <div class="col" style="text-align:right;font-weight:bold;color:darkred">
+                                <small style="">Назва компанії:</small>&nbsp;
+                                <small>@vacancy.CompanyName</small>
+                            </div>
+                        </div>
+                        <div style="text-align:center">
+                            <small style="">Дата публікації:</small>&nbsp;
+                            <small>@vacancy.DatePublish</small>
+                        </div>
+                        @if (role == "RegisterUser")
+                        {
+                            <div class="row" style="text-align:center">
+                                <div class="col">
+                                    @Html.ActionLink("Відгукнутись", "Respond", "Message",
+                                    new { userEmail = ViewBag.MyEmail, vacancyTitle = vacancy.JobTitle, recipient = vacancy.EmployerId },
+                                    new { @class = "btn btn-success" })
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+        @if (role == "Employer")
+        {
+            <hr />
+            <div class="row" style="text-align:center">
+                <div class="col">
+                    @Html.ActionLink("Додати нову ваканцію", "Vacancy", "Create",
+                           new { emplEmail = ViewBag.MyEmail }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        }
+    </div>
+}
+
+
+<style>
+    #profile {
+        color: blue;
+        padding: 9px;
+        border-radius: 5px;
+        border: 1px solid blue;
+        text-decoration: none
+    }
+
+        #profile:hover {
+            color: darkblue;
+            border: 1px solid darkblue;
+        }
+
+    #remove {
+        text-decoration: none;
+        color: red;
+        border: 1px solid red;
+        border-radius: 5px;
+        padding: 5px
+    }
+
+        #remove:hover {
+            color: darkred;
+            border: 1px solid darkred;
+        }
+
+    #edit {
+        text-decoration: none;
+        color: green;
+        border: 1px solid green;
+        border-radius: 5px;
+        padding: 5px
+    }
+
+        #edit:hover {
+            color: darkgreen;
+            border: 1px solid darkgreen;
+        }
+
+    #allCateg {
+        text-align: center;
+        text-decoration: none;
+        font-size: x-large;
+        color: blue
+    }
+</style>

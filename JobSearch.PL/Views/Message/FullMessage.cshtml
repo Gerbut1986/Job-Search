@@ -1,0 +1,104 @@
+﻿@model JobSearch.BLL.Dto.MessageDto
+@{
+    ViewBag.Title = "FullMessage";
+    var msg = Model;
+}
+
+@{
+    var recipient = ViewBag.Recipient as JobSearch.PL.Models.ApplicationUser;
+    var sender = ViewBag.Sender as JobSearch.PL.Models.ApplicationUser;
+    var split = msg.TextMessage.Split(new char[] { '|' });
+}
+
+<div class="row">
+    <div class="row" id="title">
+        <div class="col">
+            <h3 style="font-weight:bold;color:white">@msg.Title</h3>
+        </div>
+    </div>
+    <div class="row" id="msgBody">
+        <div class="col"></div>
+        <div class="col">
+            @if (msg.TextMessage.Contains("|"))
+            {
+                <h4>@split[0]</h4>
+                <h4>@split[1]</h4>
+                <h4>@split[2]</h4>
+                <h4>@split[3]</h4>
+                <h4>@split[4]</h4>
+            }
+            else
+            {
+                <h4>@msg.TextMessage</h4>
+            }
+            <small>@msg.DateMessage</small>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<div class="col" style="text-align:center">
+    <button style="font-family: 'Palatino Linotype'; background-color: #353535;color:white" onclick="document.getElementById('id01').style.display='block'" class="w3-button">Відписати</button>
+</div>
+
+<div style="opacity:0.97;margin-top:0px" id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom w3-card-4">
+        <header class="w3-container" style="background-color: #353535; color: whitesmoke">
+            <span onclick="document.getElementById('id01').style.display='none'"
+                  class="w3-button w3-display-topright">&times;</span>
+            <h2 style="text-align:center;font-family:'Palatino Linotype'">Відписати</h2>
+        </header>
+        <div class="w3-container">
+            <form action="~/Message/Send" method="post" style="padding:50px">
+                <input value="@sender.Email" name="" style="margin-bottom:5px" type="email" class="form-control" readonly />
+                <input value="@recipient.Email" name="" style="margin-bottom:5px" type="email" class="form-control" readonly />
+                <input name="title" value="@msg.Title" style="margin-bottom:5px" type="text" class="form-control" />
+                <div class="form-outline">
+                    <textarea name="message" placeholder="Текст повідомлення" class="form-control" rows="5" required></textarea>
+                </div>
+                <br />
+                <div style="width:90px;margin:auto">
+                    <input class="btn btn-default" style="background-color: #353535; color: whitesmoke " type="submit" value="Надіслати" />
+                </div>
+            </form>
+        </div>
+        <footer style="text-align: center; border: 1px solid #353535; background-color: #353535; color: whitesmoke" class="w3-container">
+            <h5 style="font-family:'Palatino Linotype';font-weight:bold">Job Search</h5>
+        </footer>
+    </div>
+</div>
+<script>
+    var title = document.getElementById("title");
+    var msg = document.getElementById("message");
+    var mailInfo = { tit: title, msg: message };
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'POST',
+        url: '/Message/Send',
+        data: mailInfo,
+        success: function (result) {
+            alert(result);
+        },
+        error: function (err) {
+            alert(err.statusText);
+        });
+});
+</script>
+
+<style>
+    #msgBody {
+        background-color: whitesmoke;
+        text-align: center;
+        font-weight: bold;
+        padding: 50px
+    }
+
+    #title {
+        margin-top: 111px;
+        text-align: center;
+        background-color: #353535;
+        padding: 5px
+    }
+</style>
+

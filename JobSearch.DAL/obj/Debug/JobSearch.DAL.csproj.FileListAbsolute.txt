@@ -1,0 +1,12 @@
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\bin\Debug\JobSearch.DAL.dll.config
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\bin\Debug\JobSearch.DAL.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\bin\Debug\JobSearch.DAL.pdb
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\bin\Debug\EntityFramework.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\bin\Debug\EntityFramework.xml
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\obj\Debug\JobSearch.DAL.csproj.AssemblyReference.cache
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\obj\Debug\JobSearch.DAL.csproj.CoreCompileInputs.cache
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\obj\Debug\JobSearch.DAL.csproj.CopyComplete
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\obj\Debug\JobSearch.DAL.dll
+C:\Users\ANDRE\Videos\Freelance\Сумми Анна Дипломна\Job search Web App\JobSearch.DAL\obj\Debug\JobSearch.DAL.pdb
